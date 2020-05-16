@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizzy_flutter/home.dart';
+import 'package:quizzy_flutter/screens/home.dart';
 
 void main() {
   runApp(MyApp());
