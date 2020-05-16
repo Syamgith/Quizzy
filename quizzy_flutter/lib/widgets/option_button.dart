@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizzy_flutter/questions_lib.dart';
 
 class OptionButton extends StatelessWidget {
   OptionButton(this.option);
@@ -21,7 +22,9 @@ class OptionButton extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        QuestionsLib().fetchingData();
+      },
     );
   }
 }
