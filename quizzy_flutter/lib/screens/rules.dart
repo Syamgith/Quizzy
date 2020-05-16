@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizzy_flutter/screens/play_screen.dart';
+import 'package:quizzy_flutter/widgets/quiztitle_container.dart';
 import 'package:quizzy_flutter/widgets/title_container.dart';
 
 class Rules extends StatelessWidget {
@@ -13,7 +14,9 @@ class Rules extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          TitleContainer(title: 'Rules'),
+          QuizTitleContainer(
+            title: 'Rules',
+          ),
           Expanded(
             child: Container(
               child: Column(
