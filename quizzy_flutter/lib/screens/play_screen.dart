@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:quizzy_flutter/models/question.dart';
 import 'package:quizzy_flutter/questions_lib.dart';
+import 'package:quizzy_flutter/screens/result_screen.dart';
 import 'package:quizzy_flutter/widgets/option_button.dart';
 import 'package:quizzy_flutter/widgets/quiztitle_container.dart';
 
@@ -20,6 +21,7 @@ class _PlayScreenState extends State<PlayScreen> {
   int questionNo = 0;
   bool isWaiting = true;
   bool fistClick = true;
+  int points = 0;
   Question currentQuestion;
   List<Color> colours = [
     Colors.white,
@@ -44,19 +46,24 @@ class _PlayScreenState extends State<PlayScreen> {
 
   void loadQuestion() {
     if (quiz != null) {
-      setState(() {
-        fistClick = true;
-        isWaiting = false;
-        currentQuestion = quiz[questionNo];
-        options = currentQuestion.options.keys.toList();
-        questionNo++;
-        colours = [
-          Colors.white,
-          Colors.white,
-          Colors.white,
-          Colors.white,
-        ];
-      });
+      if (questionNo >= 5) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Result(points)));
+      } else {
+        setState(() {
+          fistClick = true;
+          isWaiting = false;
+          currentQuestion = quiz[questionNo];
+          options = currentQuestion.options.keys.toList();
+          questionNo++;
+          colours = [
+            Colors.white,
+            Colors.white,
+            Colors.white,
+            Colors.white,
+          ];
+        });
+      }
     } else {
       getQuiz();
     }
@@ -66,9 +73,10 @@ class _PlayScreenState extends State<PlayScreen> {
     if (fistClick) {
       setState(() {
         colours[id] = isTrue ? Colors.green : Colors.red;
+        points = isTrue ? points += 10 : points -= 5;
       });
 
-      Timer(Duration(seconds: 3), loadQuestion);
+      Timer(Duration(seconds: 2), loadQuestion);
     }
     fistClick = false;
   }
