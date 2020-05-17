@@ -15,7 +15,7 @@ class _PlayScreenState extends State<PlayScreen> {
   QuestionsLib questionsLib;
   List quiz;
   List options;
-  int questionNo = 1;
+  int questionNo = 0;
   bool isWaiting = true;
   Question currentQuestion;
   @override
@@ -29,11 +29,20 @@ class _PlayScreenState extends State<PlayScreen> {
     isWaiting = true;
     quiz = await questionsLib.getQuestions();
     if (quiz != null) {
+      loadQuestion();
+    }
+  }
+
+  void loadQuestion() {
+    if (quiz != null) {
       setState(() {
         isWaiting = false;
-        currentQuestion = quiz[0];
+        currentQuestion = quiz[questionNo];
         options = currentQuestion.options.keys.toList();
+        questionNo++;
       });
+    } else {
+      getQuiz();
     }
   }
 
@@ -56,14 +65,21 @@ class _PlayScreenState extends State<PlayScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  OptionButton(!isWaiting ? options[0] : ''),
-                  OptionButton(!isWaiting ? options[1] : ''),
-                  OptionButton(!isWaiting ? options[2] : ''),
-                  OptionButton(!isWaiting ? options[3] : ''),
-                  Container(
-                    height: 40,
-                    width: double.infinity,
-                    //color: Colors.pink,
+                  OptionButton(
+                    option: !isWaiting ? options[0] : '',
+                    onPress: loadQuestion,
+                  ),
+                  OptionButton(
+                    option: !isWaiting ? options[1] : '',
+                    onPress: loadQuestion,
+                  ),
+                  OptionButton(
+                    option: !isWaiting ? options[2] : '',
+                    onPress: loadQuestion,
+                  ),
+                  OptionButton(
+                    option: !isWaiting ? options[3] : '',
+                    onPress: loadQuestion,
                   ),
                 ],
               ),

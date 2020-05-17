@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quizzy_flutter/questions_lib.dart';
 
 class OptionButton extends StatelessWidget {
-  OptionButton(this.option);
+  OptionButton({this.option, this.onPress});
   final String option;
+  final Function onPress;
   @override
   Widget build(BuildContext context) {
     return FlatButton(
@@ -23,7 +23,7 @@ class OptionButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        // QuestionsLib().fetchData();
+        onPress();
       },
     );
   }
