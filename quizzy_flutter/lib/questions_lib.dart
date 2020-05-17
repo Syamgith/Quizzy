@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class QuestionsLib {
-  List<Question> quiz;
+  List<Question> quiz = [];
 
   void fetchingData() async {
     var response =
@@ -17,10 +17,23 @@ class QuestionsLib {
   }
 
   void fromJson(data) {
-    String question0 = data['Quiz Questions'][0]['Questions'];
-    var options0 = data['Quiz Questions'][0]['Answers'][0]['Answers'];
-    print(question0);
-    print(options0);
+    for (var quizQuestions in data['Quiz Questions']) {
+      Map<String, bool> optionsl = {};
+      optionsl.clear();
+      String questionl = quizQuestions['Questions'];
+      for (var answers in quizQuestions['Answers']) {
+        String option = answers['Answers'];
+        bool isTrue = answers['isTrue'];
+        optionsl[option] = isTrue;
+      }
+      //print(optionsl);
+      Question q = Question(question: questionl, options: optionsl);
+      quiz.add(q);
+    }
+    for (var q in quiz) {
+      print(q.question);
+      print(q.options);
+    }
   }
 }
 
