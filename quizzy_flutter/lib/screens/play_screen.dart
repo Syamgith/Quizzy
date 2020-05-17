@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quizzy_flutter/models/question.dart';
+import 'package:quizzy_flutter/questions_lib.dart';
 import 'package:quizzy_flutter/widgets/option_button.dart';
 import 'package:quizzy_flutter/widgets/quiztitle_container.dart';
 
@@ -10,6 +12,31 @@ class PlayScreen extends StatefulWidget {
 }
 
 class _PlayScreenState extends State<PlayScreen> {
+  QuestionsLib questionsLib;
+  List quiz;
+  List options;
+  int questionNo = 1;
+  bool isWaiting = true;
+  Question currentQuestion;
+  @override
+  void initState() {
+    super.initState();
+    questionsLib = QuestionsLib();
+    getQuiz();
+  }
+
+  void getQuiz() async {
+    isWaiting = true;
+    quiz = await questionsLib.getQuestions();
+    if (quiz != null) {
+      setState(() {
+        isWaiting = false;
+        currentQuestion = quiz[0];
+        options = currentQuestion.options.keys.toList();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +46,8 @@ class _PlayScreenState extends State<PlayScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           QuizTitleContainer(
-            title: '1',
-            subtitle:
-                'First programming language? jfk ksfsf dkjfjskfkjs kjsdfjksd',
+            title: questionNo.toString(),
+            subtitle: !isWaiting ? currentQuestion.question : '',
           ),
           Expanded(
             child: Container(
@@ -30,10 +56,10 @@ class _PlayScreenState extends State<PlayScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  OptionButton('option 1'),
-                  OptionButton('Option 2'),
-                  OptionButton('option 3'),
-                  OptionButton('Option 4'),
+                  OptionButton(!isWaiting ? options[0] : ''),
+                  OptionButton(!isWaiting ? options[1] : ''),
+                  OptionButton(!isWaiting ? options[2] : ''),
+                  OptionButton(!isWaiting ? options[3] : ''),
                   Container(
                     height: 40,
                     width: double.infinity,
