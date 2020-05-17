@@ -46,6 +46,10 @@ class _PlayScreenState extends State<PlayScreen> {
     }
   }
 
+  void checkAnswer(bool isTrue) {
+    loadQuestion();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,19 +71,31 @@ class _PlayScreenState extends State<PlayScreen> {
                 children: <Widget>[
                   OptionButton(
                     option: !isWaiting ? options[0] : '',
-                    onPress: loadQuestion,
+                    isTrue: !isWaiting
+                        ? currentQuestion.options[options[0]]
+                        : false,
+                    onPress: checkAnswer,
                   ),
                   OptionButton(
                     option: !isWaiting ? options[1] : '',
-                    onPress: loadQuestion,
+                    isTrue: !isWaiting
+                        ? currentQuestion.options[options[1]]
+                        : false,
+                    onPress: checkAnswer,
                   ),
                   OptionButton(
                     option: !isWaiting ? options[2] : '',
-                    onPress: loadQuestion,
+                    isTrue: !isWaiting
+                        ? currentQuestion.options[options[2]]
+                        : false,
+                    onPress: checkAnswer,
                   ),
                   OptionButton(
                     option: !isWaiting ? options[3] : '',
-                    onPress: loadQuestion,
+                    isTrue: !isWaiting
+                        ? currentQuestion.options[options[3]]
+                        : false,
+                    onPress: checkAnswer,
                   ),
                 ],
               ),
