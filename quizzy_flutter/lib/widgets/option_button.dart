@@ -21,6 +21,7 @@ class OptionButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Text(
         option,
+        textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 22,
           color: Colors.black,

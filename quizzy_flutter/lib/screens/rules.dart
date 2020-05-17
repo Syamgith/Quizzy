@@ -24,16 +24,12 @@ class Rules extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Must attempt all quiestions.',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  Text(
-                    'For each correct answer 10 points.',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  Text(
-                    'For each wrong answer -5 points.',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    'Must attempt all questions.\n \nFor each correct answer 10 points.\n \nFor each wrong answer -5 points.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
                   ),
                   RaisedButton(
                     shape: RoundedRectangleBorder(

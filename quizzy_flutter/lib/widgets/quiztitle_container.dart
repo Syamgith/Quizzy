@@ -8,7 +8,7 @@ class QuizTitleContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        //padding: EdgeInsets.only(top: 100),
+        padding: EdgeInsets.symmetric(horizontal: 75, vertical: 5.0),
         decoration: BoxDecoration(
           color: Colors.pink,
           borderRadius: BorderRadius.only(
@@ -34,7 +34,7 @@ class QuizTitleContainer extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 21,
                   fontWeight: FontWeight.bold),
             ),
           ],

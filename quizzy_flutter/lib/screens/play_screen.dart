@@ -47,7 +47,7 @@ class _PlayScreenState extends State<PlayScreen> {
   void loadQuestion() {
     if (quiz != null) {
       if (questionNo >= 5) {
-        Navigator.push(
+        Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => Result(points)));
       } else {
         setState(() {
