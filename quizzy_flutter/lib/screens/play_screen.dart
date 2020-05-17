@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:quizzy_flutter/models/question.dart';
 import 'package:quizzy_flutter/questions_lib.dart';
@@ -18,6 +20,12 @@ class _PlayScreenState extends State<PlayScreen> {
   int questionNo = 0;
   bool isWaiting = true;
   Question currentQuestion;
+  List<Color> colours = [
+    Colors.white,
+    Colors.white,
+    Colors.white,
+    Colors.white,
+  ];
   @override
   void initState() {
     super.initState();
@@ -40,14 +48,24 @@ class _PlayScreenState extends State<PlayScreen> {
         currentQuestion = quiz[questionNo];
         options = currentQuestion.options.keys.toList();
         questionNo++;
+        colours = [
+          Colors.white,
+          Colors.white,
+          Colors.white,
+          Colors.white,
+        ];
       });
     } else {
       getQuiz();
     }
   }
 
-  void checkAnswer(bool isTrue) {
-    loadQuestion();
+  void checkAnswer(isTrue, id) {
+    setState(() {
+      colours[id] = isTrue ? Colors.green : Colors.red;
+    });
+
+    Timer(Duration(seconds: 3), loadQuestion);
   }
 
   @override
@@ -70,33 +88,38 @@ class _PlayScreenState extends State<PlayScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   OptionButton(
-                    option: !isWaiting ? options[0] : '',
-                    isTrue: !isWaiting
-                        ? currentQuestion.options[options[0]]
-                        : false,
-                    onPress: checkAnswer,
-                  ),
+                      id: 0,
+                      option: !isWaiting ? options[0] : '',
+                      isTrue: !isWaiting
+                          ? currentQuestion.options[options[0]]
+                          : false,
+                      onPress: checkAnswer,
+                      colour: colours[0]),
                   OptionButton(
-                    option: !isWaiting ? options[1] : '',
-                    isTrue: !isWaiting
-                        ? currentQuestion.options[options[1]]
-                        : false,
-                    onPress: checkAnswer,
-                  ),
+                      id: 1,
+                      option: !isWaiting ? options[1] : '',
+                      isTrue: !isWaiting
+                          ? currentQuestion.options[options[1]]
+                          : false,
+                      onPress: checkAnswer,
+                      colour: colours[1]),
                   OptionButton(
+                    id: 2,
                     option: !isWaiting ? options[2] : '',
                     isTrue: !isWaiting
                         ? currentQuestion.options[options[2]]
                         : false,
                     onPress: checkAnswer,
+                    colour: colours[2],
                   ),
                   OptionButton(
-                    option: !isWaiting ? options[3] : '',
-                    isTrue: !isWaiting
-                        ? currentQuestion.options[options[3]]
-                        : false,
-                    onPress: checkAnswer,
-                  ),
+                      id: 3,
+                      option: !isWaiting ? options[3] : '',
+                      isTrue: !isWaiting
+                          ? currentQuestion.options[options[3]]
+                          : false,
+                      onPress: checkAnswer,
+                      colour: colours[3]),
                 ],
               ),
             ),
