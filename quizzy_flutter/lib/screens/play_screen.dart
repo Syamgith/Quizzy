@@ -19,6 +19,7 @@ class _PlayScreenState extends State<PlayScreen> {
   List options;
   int questionNo = 0;
   bool isWaiting = true;
+  bool fistClick = true;
   Question currentQuestion;
   List<Color> colours = [
     Colors.white,
@@ -44,6 +45,7 @@ class _PlayScreenState extends State<PlayScreen> {
   void loadQuestion() {
     if (quiz != null) {
       setState(() {
+        fistClick = true;
         isWaiting = false;
         currentQuestion = quiz[questionNo];
         options = currentQuestion.options.keys.toList();
@@ -61,11 +63,14 @@ class _PlayScreenState extends State<PlayScreen> {
   }
 
   void checkAnswer(isTrue, id) {
-    setState(() {
-      colours[id] = isTrue ? Colors.green : Colors.red;
-    });
+    if (fistClick) {
+      setState(() {
+        colours[id] = isTrue ? Colors.green : Colors.red;
+      });
 
-    Timer(Duration(seconds: 3), loadQuestion);
+      Timer(Duration(seconds: 3), loadQuestion);
+    }
+    fistClick = false;
   }
 
   @override
