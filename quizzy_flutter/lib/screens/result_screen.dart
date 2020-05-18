@@ -33,7 +33,7 @@ class Result extends StatelessWidget {
               SizedBox(height: 30),
               Text(
                 'You scored \n$points points!',
-                textAlign: TextAlign.justify,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,
