@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class QuizTitleContainer extends StatelessWidget {
-  QuizTitleContainer({this.title, this.subtitle = ''});
+  QuizTitleContainer({this.title, this.subtitle = '', this.correct});
   final String title;
   final String subtitle;
+  final bool correct;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -18,7 +19,7 @@ class QuizTitleContainer extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Text(
               title,
@@ -28,7 +29,6 @@ class QuizTitleContainer extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 20.0),
             Text(
               subtitle,
               textAlign: TextAlign.center,
@@ -36,6 +36,38 @@ class QuizTitleContainer extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 21,
                   fontWeight: FontWeight.bold),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              decoration: correct != null
+                  ? BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20.0),
+                      ),
+                    )
+                  : null,
+              child: correct == null
+                  ? null
+                  : Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          correct ? 'Correct' : 'Wrong',
+                          style: TextStyle(
+                              color: correct ? Colors.green : Colors.red,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Icon(
+                          correct ? Icons.check : Icons.close,
+                          color: correct ? Colors.green : Colors.red,
+                          size: 25.0,
+                        ),
+                      ],
+                    ),
             ),
           ],
         ),
