@@ -3,11 +3,12 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class QuizTitleContainer extends StatelessWidget {
   QuizTitleContainer(
-      {this.title, this.subtitle = '', this.correct, this.timer});
+      {this.title, this.subtitle = '', this.correct, this.timer, this.points});
   final String title;
   final String subtitle;
   final bool correct;
   final int timer;
+  final int points;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -54,7 +55,25 @@ class QuizTitleContainer extends StatelessWidget {
                     backgroundColor: Colors.white,
                     progressColor: Colors.black,
                   )
-                : Text('Points'),
+                : correct != null
+                    ? Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 2.0),
+                        child: Text(
+                          'Points: $points',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    : Text(''),
             Text(
               title,
               style: TextStyle(

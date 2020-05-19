@@ -32,7 +32,7 @@ class _PlayScreenState extends State<PlayScreen> {
   ];
   bool showCorrect;
   bool cancelTimer = false;
-  int timeCount = 10;
+  int timeCount = 15;
   @override
   void initState() {
     super.initState();
@@ -57,7 +57,7 @@ class _PlayScreenState extends State<PlayScreen> {
         setState(() {
           fistClick = true;
           cancelTimer = false;
-          timeCount = 10;
+          timeCount = 15;
           isWaiting = false;
           currentQuestion = quiz[questionNo];
           options = currentQuestion.options.keys.toList();
@@ -129,6 +129,7 @@ class _PlayScreenState extends State<PlayScreen> {
                   subtitle: !isWaiting ? currentQuestion.question : '',
                   correct: !fistClick ? showCorrect : null,
                   timer: timeCount,
+                  points: points,
                 ),
                 Expanded(
                   child: Container(
