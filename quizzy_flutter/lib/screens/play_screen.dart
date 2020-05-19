@@ -1,12 +1,13 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:quizzy_flutter/models/question.dart';
 import 'package:quizzy_flutter/questions_lib.dart';
 import 'package:quizzy_flutter/screens/result_screen.dart';
 import 'package:quizzy_flutter/widgets/option_button.dart';
 import 'package:quizzy_flutter/widgets/quiztitle_container.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PlayScreen extends StatefulWidget {
   PlayScreen({Key key}) : super(key: key);
@@ -77,7 +78,7 @@ class _PlayScreenState extends State<PlayScreen> {
   }
 
   void checkAnswer(isTrue, id) {
-    if (fistClick) {
+    if (fistClick && timeCount > 0) {
       setState(() {
         colours[id] = isTrue ? Colors.green : Colors.red;
         points = isTrue ? points += 10 : points -= 5;

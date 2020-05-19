@@ -37,7 +37,7 @@ class QuizTitleContainer extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          timer.toString(),
+                          timer > 0 ? timer.toString() : 'TimeOut',
                           style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.w700,
