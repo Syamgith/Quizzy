@@ -2,8 +2,8 @@
 
 
  A super cool quiz app made in flutter.   <br>
- Used http://www.mocky.io/v2/5ebd2f5f31000018005b117f api to get the quiz questions <br>
- Made as a challenge for https://github.com/FlutterKerala/WeeklyChallenges
+ Used http://www.mocky.io/v2/5ebd2f5f31000018005b117f Api to get the quiz datas <br>
+ Flutter Kerala Weekly challenge https://github.com/FlutterKerala/WeeklyChallenges
 ****
 
 
