@@ -18,12 +18,12 @@ class OptionButton extends StatelessWidget {
         ),
       ),
       color: colour,
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 7),
       child: Text(
         option,
         textAlign: TextAlign.center,
         style: TextStyle(
-          fontSize: 20,
+          fontSize: 16,
           color: Colors.black,
         ),
       ),

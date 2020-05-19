@@ -38,11 +38,11 @@ class Rules extends StatelessWidget {
                       ),
                     ),
                     color: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 35, vertical: 10),
                     child: Text(
                       'Start',
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 25,
                         color: Colors.black,
                       ),
                     ),

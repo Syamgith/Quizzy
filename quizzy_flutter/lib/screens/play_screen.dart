@@ -134,9 +134,9 @@ class _PlayScreenState extends State<PlayScreen> {
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.only(
-                        top: 40, right: 40, left: 40, bottom: 5),
+                        top: 15, right: 20, left: 20, bottom: 5),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         OptionButton(

@@ -19,33 +19,36 @@ class Home extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 130, vertical: 150),
-                child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(60),
-                      side: BorderSide(
-                        color: Colors.pink,
-                      ),
-                    ),
-                    color: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    child: Text(
-                      'Play',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Rules(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(60),
+                        side: BorderSide(
+                          color: Colors.pink,
                         ),
-                      );
-                    }),
+                      ),
+                      color: Colors.white,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      child: Text(
+                        'Play',
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Rules(),
+                          ),
+                        );
+                      }),
+                ],
               ),
             ),
           )
