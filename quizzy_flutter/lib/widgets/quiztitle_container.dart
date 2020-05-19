@@ -58,7 +58,7 @@ class QuizTitleContainer extends StatelessWidget {
                 : correct != null
                     ? Container(
                         decoration: BoxDecoration(
-                          color: Colors.black,
+                          color: Colors.pinkAccent,
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),
                           ),
@@ -68,7 +68,7 @@ class QuizTitleContainer extends StatelessWidget {
                         child: Text(
                           'Points: $points',
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
                         ),
@@ -91,7 +91,7 @@ class QuizTitleContainer extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 7),
               decoration: correct != null
                   ? BoxDecoration(
                       color: Colors.black,

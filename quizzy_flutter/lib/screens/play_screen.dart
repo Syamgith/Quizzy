@@ -79,7 +79,7 @@ class _PlayScreenState extends State<PlayScreen> {
   void checkAnswer(isTrue, id) {
     if (fistClick) {
       setState(() {
-        colours[id] = isTrue ? Colors.lightGreen : Colors.red;
+        colours[id] = isTrue ? Colors.green : Colors.red;
         points = isTrue ? points += 10 : points -= 5;
         showCorrect = isTrue ? true : false;
         cancelTimer = true;

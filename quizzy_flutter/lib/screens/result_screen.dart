@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quizzy_flutter/screens/home.dart';
 
 class Result extends StatelessWidget {
   Result(this.points);
@@ -41,6 +40,7 @@ class Result extends StatelessWidget {
               ),
               SizedBox(height: 20),
               RaisedButton(
+                elevation: 10,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
@@ -57,12 +57,7 @@ class Result extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Home(),
-                    ),
-                  );
+                  Navigator.pop(context);
                 },
               ),
             ],

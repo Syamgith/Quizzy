@@ -23,7 +23,7 @@ class OptionButton extends StatelessWidget {
         option,
         textAlign: TextAlign.center,
         style: TextStyle(
-          fontSize: 22,
+          fontSize: 20,
           color: Colors.black,
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizzy_flutter/screens/play_screen.dart';
 import 'package:quizzy_flutter/widgets/quiztitle_container.dart';
-import 'package:quizzy_flutter/widgets/title_container.dart';
 
 class Rules extends StatelessWidget {
   const Rules({Key key}) : super(key: key);
@@ -24,7 +23,7 @@ class Rules extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Must attempt all questions.\n \nFor each correct answer 10 points.\n \nFor each wrong answer -5 points.',
+                    '15 seconds for each question.\n \nFor each correct answer 10 points.\n \nFor each wrong answer -5 points.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -48,7 +47,7 @@ class Rules extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => PlayScreen(),

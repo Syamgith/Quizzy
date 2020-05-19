@@ -21,10 +21,10 @@ class Home extends StatelessWidget {
             child: Container(
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 130, vertical: 145),
+                    const EdgeInsets.symmetric(horizontal: 130, vertical: 150),
                 child: RaisedButton(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(60),
                       side: BorderSide(
                         color: Colors.pink,
                       ),
@@ -34,9 +34,9 @@ class Home extends StatelessWidget {
                     child: Text(
                       'Play',
                       style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.black,
-                      ),
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700),
                     ),
                     onPressed: () {
                       Navigator.push(
