@@ -31,6 +31,8 @@ class _PlayScreenState extends State<PlayScreen> {
     Colors.white,
   ];
   bool showCorrect;
+  bool cancelTimer = false;
+  int timeCount = 10;
   @override
   void initState() {
     super.initState();
@@ -54,7 +56,8 @@ class _PlayScreenState extends State<PlayScreen> {
       } else {
         setState(() {
           fistClick = true;
-
+          cancelTimer = false;
+          timeCount = 10;
           isWaiting = false;
           currentQuestion = quiz[questionNo];
           options = currentQuestion.options.keys.toList();
@@ -65,6 +68,7 @@ class _PlayScreenState extends State<PlayScreen> {
             Colors.white,
             Colors.white,
           ];
+          startTimer();
         });
       }
     } else {
@@ -78,11 +82,33 @@ class _PlayScreenState extends State<PlayScreen> {
         colours[id] = isTrue ? Colors.lightGreen : Colors.red;
         points = isTrue ? points += 10 : points -= 5;
         showCorrect = isTrue ? true : false;
+        cancelTimer = true;
       });
 
       Timer(Duration(seconds: 2), loadQuestion);
     }
     fistClick = false;
+  }
+
+  void startTimer() async {
+    Timer.periodic(Duration(seconds: 1), (Timer t) {
+      if (timeCount < 1) {
+        t.cancel();
+        loadQuestion();
+      } else if (cancelTimer) {
+        t.cancel();
+      } else {
+        setState(() {
+          timeCount--;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    cancelTimer = true;
+    super.dispose();
   }
 
   @override
@@ -102,6 +128,7 @@ class _PlayScreenState extends State<PlayScreen> {
                   title: questionNo.toString(),
                   subtitle: !isWaiting ? currentQuestion.question : '',
                   correct: !fistClick ? showCorrect : null,
+                  timer: timeCount,
                 ),
                 Expanded(
                   child: Container(

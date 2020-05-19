@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class QuizTitleContainer extends StatelessWidget {
-  QuizTitleContainer({this.title, this.subtitle = '', this.correct});
+  QuizTitleContainer(
+      {this.title, this.subtitle = '', this.correct, this.timer});
   final String title;
   final String subtitle;
   final bool correct;
+  final int timer;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -21,6 +24,37 @@ class QuizTitleContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            correct == null && timer != null
+                ? LinearPercentIndicator(
+                    animation: true,
+                    animationDuration: timer * 1000,
+                    animateFromLastPercent: true,
+                    lineHeight: 20.0,
+                    percent: timer > 0 ? 1.0 : 0.0,
+                    center: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          timer.toString(),
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.pink,
+                          ),
+                        ),
+                        Icon(
+                          Icons.timer,
+                          color: Colors.pink,
+                          size: 18,
+                        ),
+                      ],
+                    ),
+                    linearStrokeCap: LinearStrokeCap.roundAll,
+                    backgroundColor: Colors.white,
+                    progressColor: Colors.black,
+                  )
+                : Text('Points'),
             Text(
               title,
               style: TextStyle(
