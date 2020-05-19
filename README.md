@@ -8,7 +8,7 @@
 
 
 
-![](screenshots/ssgif.gif)
+
 ****
 ![](screenshots/ss1.png)
 ![](screenshots/ss2.png)
